@@ -2,12 +2,12 @@
 Responsive split-flap library
 
 ### How to use
-```
+```html
 <div id="sf-con"></div>
 ```
 
 
-```
+```javascript
 let sf = new SplitFlap({
   container: document.querySelector("#sf-con"),
   mode: "text",                // text, clock, countdown
