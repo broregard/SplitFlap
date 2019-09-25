@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Yantramanav');
+
+:root {
+  --sf-width: 100vw;
+  --sf-segments: 0;
+  --sf-width-segment: calc(var(--sf-width)/var(--sf-segments));
+  --sf-radius: 1.5vmin;
+  --sf-rgb: 59, 182, 235;
+  --sf-fontColor: 255, 255, 255;
+  --sf-animationDirection: normal;
+  --sf-margin: 1;
+  --sf-speed: 1s;
+}
+
+.sf-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.splitflap {
+  min-width: var(--sf-width-segment);
+  font-size: var(--sf-width-segment);
+  line-height: var(--sf-width-segment);
+  text-align: center;
+  height: var(--sf-width-segment);
+  color: rgb(var(--sf-fontColor));
+  margin: calc(var(--sf-margin)*5px);
+  perspective: 1000px;
+  position: relative;
+  font-family: 'Yantramanav', sans-serif;
+  -webkit-transform: translate3D(0, 0, 0);
+  border: 1.3px solid black;
+  border-radius: var(--sf-radius);
+  background-color: rgb(var(--sf-rgb));
+}
+
+
+
+.front-top {
+  background-color: rgb(var(--sf-rgb));
+  border-radius: var(--sf-radius) var(--sf-radius) 0 0;
+  height: 50%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.front-full {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin-top: -50%;
+  border-radius: var(--sf-radius) var(--sf-radius) var(--sf-radius) var(--sf-radius);
+  z-index: -2;
+  background-color: black;
+  background-image: linear-gradient(rgba(var(--sf-rgb), 0), rgb(var(--sf-rgb)));
+  transform-origin: center;
+}
+
+.front-top:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+}
+
+
+.back-top {
+  position: relative;
+  height: 50%;
+  width: 100%;
+  background-color: rgb(var(--sf-rgb));
+  margin-top: -100%;
+  overflow: hidden;
+  border-radius: var(--sf-radius) var(--sf-radius) 0 0;
+  z-index: 2;
+  background-color: black;
+  background-image: linear-gradient(rgb(var(--sf-rgb)), rgba(var(--sf-rgb), 1));
+  transform-origin: bottom;
+  transform: rotateX(-90deg);
+}
+
+.back-top:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+.back-full {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(var(--sf-rgb));
+  margin-top: -50%;
+  border-radius: var(--sf-radius) var(--sf-radius) var(--sf-radius) var(--sf-radius);
+  z-index: -3;
+}
+
+.flip1 {
+  animation: flip1 ease-in;
+  animation-fill-mode: forwards;
+  animation-direction: var(--sf-animationDirection);
+  animation-duration: var(--sf-speed);
+}
+
+.flip2 {
+  animation: flip2 ease-out;
+  animation-fill-mode: forwards;
+  animation-direction: var(--sf-animationDirection);
+  animation-duration: var(--sf-speed);
+}
+
+@keyframes flip1 {
+  0% {
+    transform: rotateX(0deg);
+    background-color: rgb(var(--sf-rgb));
+  }
+  50% {
+    transform: rotateX(90deg);
+    background-color: black;
+  }
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes flip2 {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  50% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+    background-color: rgb(var(--sf-rgb));
+  }
+}
+
+.splitflap:nth-child(even) {
+  margin-left: calc(-6px * var(--sf-margin));
+}
+
+
+
