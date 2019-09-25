@@ -1,6 +1,8 @@
 # SplitFlap
 Responsive split-flap library
 
+![splitflappin'](https://dl.dropboxusercontent.com/s/2g4kzz6m3kw18fw/splitflap.gif)
+
 Check out the [demo](https://codepen.io/broregard/pen/vroJzR)
 
 ### How to use
